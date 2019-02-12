@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Fachgesprächsplaner';
+  institutionLogo = '../../../assets/Logo-RSBS-SVG_mini-blau.svg';
 }

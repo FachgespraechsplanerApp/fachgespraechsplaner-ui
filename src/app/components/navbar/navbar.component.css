@@ -1,0 +1,10 @@
+.navbar-logo {
+    height: 30px;
+    margin: 0 10px 0 0;
+    padding: 0 10px 0 0;
+    border-right: 1px solid gray;
+}
+
+a {
+    color: black;
+}
