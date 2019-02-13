@@ -1,20 +1,20 @@
 <nav class="navbar navbar-light bg-light">
   <div>
     <img class="navbar-logo" src="{{ institutionLogo }}" alt="">
-    <a class="navbar-brand">{{ title }}</a>
+    <a class="navbar-brand" routerLink="/">{{ title }}</a>
   </div>
   <div>
     <div class="dropleft">
-      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-info-circle"></i>
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#" disabled>Version 2.0.0</a>
-        <a class="dropdown-item" href="#">Handbuch</a>
-        <a class="dropdown-item" href="#">Fehler melden...</a>
-        <a class="dropdown-item" href="#">Hilfe</a>
-        <a class="dropdown-item" href="#">Impressum</a>
-        <a class="dropdown-item" href="#">Datenschutz</a>
+        <a class="dropdown-item" disabled>Version 2.0.0</a>
+        <a class="dropdown-item" routerLink="/dashboard">Handbuch</a>
+        <a class="dropdown-item" routerLink="/dashboard">Fehler melden...</a>
+        <a class="dropdown-item" routerLink="/dashboard">Hilfe</a>
+        <a class="dropdown-item" routerLink="/dashboard">Impressum</a>
+        <a class="dropdown-item" routerLink="/dashboard">Datenschutz</a>
       </div>
     </div>
   </div>
