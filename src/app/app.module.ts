@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from './views/settings/settings.component';
 import { AdminComponent } from './views/admin/admin.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,17 +18,19 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
     LoginComponent,
     SettingsComponent,
     AdminComponent,
-    DashboardComponent
+    DashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: AppComponent },
-      { path: 'login', component: AppComponent },
+      { path: '', component: LoginComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'admin', component: AdminComponent },
       { path: 'settings', component: SettingsComponent },
+      { path: '**', component: NotFoundComponent },
     ])
   ],
   providers: [],
