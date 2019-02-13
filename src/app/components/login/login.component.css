@@ -1,7 +1,18 @@
 .row {
-  margin-top: 20px;
+  margin: 20px 0 0;
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: center;
+}
+
+.lostPasswordLink {
+  float: right;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
 }

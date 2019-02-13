@@ -2,22 +2,30 @@
   <div class="col-md-5">
     <div class="card">
       <div class="card-body">
-        <form>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
           <div class="form-group">
-            <label for="exampleInputEmail1">E-Mail-Adresse</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="z.B. mustermann@test.de">
+            <label for="institution">Institution</label>
+            <select class="form-control" id="institution" required [(ngModel)]="model.institution" name="institution">
+              <option *ngFor="let institution of institutions" [value]="institution[0]">{{institution[1]}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail-Adresse</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                   placeholder="z.B. mustermann@test.de" required
+                   [(ngModel)]="model.email" name="email">
             <small id="emailHelp" class="form-text text-muted">Wir werden deine Daten nicht an Dritte weitergeben.</small>
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Passwort</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Passwort">
+            <label for="password">Passwort</label>
+            <input type="password" class="form-control" id="password" placeholder="Passwort" required [(ngModel)]="model.password" name="password">
           </div>
           <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Eingeloggt bleiben</label>
+            <input type="checkbox" class="form-check-input" id="remember" [(ngModel)]="model.remember" name="remember">
+            <label class="form-check-label" for="remember">Eingeloggt bleiben</label>
           </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Einloggen</button>
+          <a href="/lost-password" class="lostPasswordLink">Passwort vergessen?</a>
         </form>
       </div>
     </div>
