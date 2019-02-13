@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-      console.log(this.model);
+      // TODO: make REST-Call to API Server to Login the user.
+      // TODO: redirect User to /dashboard after successful login.
+      console.log(this.model); // TODO: remove console.log when done.
     }
 }
