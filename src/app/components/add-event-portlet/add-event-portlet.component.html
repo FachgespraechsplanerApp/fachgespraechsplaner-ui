@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    Termin eintragen
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #addEventForm="ngForm">
+      <div class="form-group">
+        <label for="lernfeld">Lernfeld</label>
+        <select class="form-control" id="lernfeld" required [(ngModel)]="model.lernfeld" name="lernfeld" (change)="reloadTimeslots()">
+          <option *ngFor="let lernfeld of lernfelder" [value]="lernfeld[0]">{{lernfeld[1]}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="timeslot">Zeitfenster</label>
+        <select class="form-control" id="timeslot" required [(ngModel)]="model.timeslot" name="timeslot">
+          <option *ngFor="let timeslot of availableTimeslots" [value]="timeslot[1]">{{timeslot[2]}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="member">Teilnehmer</label>
+        <select class="form-control" id="member" required [(ngModel)]="model.members" name="member">
+          <option *ngFor="let member of members" [value]="member[0]">{{member[1]}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!addEventForm.form.valid">Termin eintragen</button>
+    </form>
+  </div>
+</div>
