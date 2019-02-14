@@ -20,6 +20,11 @@ export class AddEventPortletComponent implements OnInit {
         ['LF6', 1, 'LF6: AE-DB-3 Datenbankprojekt'],
         ['LF7', 2, 'LF7: Test']
     ];
+    members: any = [
+        [1, 'b25a20_mustermann'],
+        [2, 'b25a20_mueller'],
+        [3, '_musterfrau'],
+    ];
 
     availableTimeslots: any = [];
 

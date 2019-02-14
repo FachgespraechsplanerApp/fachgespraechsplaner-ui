@@ -1,3 +1,31 @@
-<p>
-  event works!
-</p>
+<div class="card-body" style="border-bottom: 1px solid lightgray;">
+    <div class="event">
+        <div class="left">
+            <div class="date">
+                <h2>12. Februar</h2>
+                <h4>11:30 - 13:00</h4>
+            </div>
+            <div class="table">
+                <table>
+                    <tr>
+                        <td>Lernfeld: </td>
+                        <td>6 - Anwendungsentwicklung</td>
+                    </tr>
+                    <tr>
+                        <td>Thema: </td>
+                        <td>Datenbankprojekt</td>
+                    </tr>
+                    <tr>
+                        <td>Teilnehmer: </td>
+                        <td>Max Mustermann, Sabine Musterfrau</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="icons">
+            <a (click)="deleteEvent()" class="deleteBtn"><i class="fas fa-trash-alt"></i></a>
+            <br>
+            <a (click)="editEvent()" class="editBtn"><i class="fas fa-pen"></i></a>
+        </div>
+    </div>
+</div>

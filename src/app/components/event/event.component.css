@@ -1,0 +1,41 @@
+.event {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.left {
+    display: -webkit-box;
+    display: -moz-box;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+h4 {
+    margin-bottom: 0;
+}
+
+td {
+    padding: 0 0 0 20px;
+    border: none;
+}
+
+.deleteBtn {
+    color: darkred!important;
+}
+
+.deleteBtn:hover {
+    color: red!important;
+    cursor: pointer;
+}
+
+.editBtn {
+    color: gray!important;
+}
+
+.editBtn:hover {
+    color: black!important;
+    cursor: pointer;
+}
