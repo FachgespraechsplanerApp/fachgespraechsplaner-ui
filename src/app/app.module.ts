@@ -10,6 +10,9 @@ import { SettingsComponent } from './views/settings/settings.component';
 import { AdminComponent } from './views/admin/admin.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { AddEventPortletComponent } from './components/add-event-portlet/add-event-portlet.component';
+import { ListEventPortletComponent } from './components/list-event-portlet/list-event-portlet.component';
+import { EventComponent } from './components/event/event.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
     SettingsComponent,
     AdminComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AddEventPortletComponent,
+    ListEventPortletComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
