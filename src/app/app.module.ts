@@ -13,6 +13,7 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
 import { AddEventPortletComponent } from './components/add-event-portlet/add-event-portlet.component';
 import { ListEventPortletComponent } from './components/list-event-portlet/list-event-portlet.component';
 import { EventComponent } from './components/event/event.component';
+import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { EventComponent } from './components/event/event.component';
   imports: [
     BrowserModule,
     FormsModule,
+    AngularMultiSelectModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'login', component: LoginComponent },

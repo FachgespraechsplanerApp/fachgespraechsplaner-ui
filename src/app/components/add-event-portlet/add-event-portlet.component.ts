@@ -26,12 +26,28 @@ export class AddEventPortletComponent implements OnInit {
         [3, '_musterfrau'],
     ];
 
+    dropdownList = [];
+    selectedItems = [];
+    dropdownSettings = {};
+
     availableTimeslots: any = [];
 
-    model: Event = new Event('', '', [''], false);
+    model: Event = new Event(null, null, [{'id': 1, 'itemName': 'b25a20_mustermann'}], false);
 
     ngOnInit(): void {
-        //
+        this.dropdownList = [
+            {'id': 1, 'itemName': 'b25a20_mustermann'},
+            {'id': 2, 'itemName': 'b25a20_mueller'},
+            {'id': 3, 'itemName': '_musterfrau'},
+        ];
+        this.dropdownSettings = {
+            singleSelection: false,
+            text: 'Teilnehmer wählen',
+            enableCheckAll: false,
+            showCheckbox: false,
+            enableFilterSelectAll: false,
+            enableSearchFilter: true
+        };
     }
 
     reloadTimeslots() {
@@ -49,6 +65,13 @@ export class AddEventPortletComponent implements OnInit {
         // TODO: make REST-Call to API Server to Login the user.
         // TODO: redirect User to /dashboard after successful login.
         console.log(this.model); // TODO: remove console.log when done.
+    }
+
+    onItemSelect(item: any) {
+        //
+    }
+    OnItemDeSelect(item: any) {
+        //
     }
 
 }
