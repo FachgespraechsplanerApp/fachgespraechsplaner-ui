@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
     selector: 'app-event',
@@ -7,18 +8,21 @@ import {Component, OnInit} from '@angular/core';
 })
 export class EventComponent implements OnInit {
 
-    constructor() {
+    private readonly notifier: NotifierService;
+
+    constructor( notifierService: NotifierService ) {
+        this.notifier = notifierService;
     }
 
     ngOnInit() {
     }
 
     editEvent() {
-        console.log('edit');
+        this.notifier.notify( 'info', 'Bearbeiten Button geklickt.' );
     }
 
     deleteEvent() {
-        console.log('delete');
+        this.notifier.notify( 'error', 'Löschen Button geklickt.' );
     }
 
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Event} from '../../event';
 import {isNullOrUndefined} from 'util';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
     selector: 'app-add-event-portlet',
@@ -9,7 +10,10 @@ import {isNullOrUndefined} from 'util';
 })
 export class AddEventPortletComponent implements OnInit {
 
-    constructor() {
+    private readonly notifier: NotifierService;
+
+    constructor( notifierService: NotifierService ) {
+        this.notifier = notifierService;
     }
 
     lernfelder: any = [
@@ -20,18 +24,27 @@ export class AddEventPortletComponent implements OnInit {
         ['LF6', 1, 'LF6: AE-DB-3 Datenbankprojekt'],
         ['LF7', 2, 'LF7: Test']
     ];
-    members: any = [
-        [1, 'b25a20_mustermann'],
-        [2, 'b25a20_mueller'],
-        [3, '_musterfrau'],
-    ];
+    dropdownList = [];
+    dropdownSettings = {};
 
     availableTimeslots: any = [];
 
-    model: Event = new Event('', '', [''], false);
+    model: Event = new Event(null, null, [{'id': 1, 'itemName': 'b25a20_mustermann'}], false);
 
     ngOnInit(): void {
-        //
+        this.dropdownList = [
+            {'id': 1, 'itemName': 'b25a20_mustermann'},
+            {'id': 2, 'itemName': 'b25a20_mueller'},
+            {'id': 3, 'itemName': '_musterfrau'},
+        ];
+        this.dropdownSettings = {
+            singleSelection: false,
+            text: 'Teilnehmer wählen',
+            enableCheckAll: false,
+            showCheckbox: false,
+            enableFilterSelectAll: false,
+            enableSearchFilter: true
+        };
     }
 
     reloadTimeslots() {
@@ -49,6 +62,14 @@ export class AddEventPortletComponent implements OnInit {
         // TODO: make REST-Call to API Server to Login the user.
         // TODO: redirect User to /dashboard after successful login.
         console.log(this.model); // TODO: remove console.log when done.
+        this.notifier.notify( 'success', 'Der Termin wurde eingetragen.' );
+    }
+
+    onItemSelect(item: any) {
+        //
+    }
+    OnItemDeSelect(item: any) {
+        //
     }
 
 }
