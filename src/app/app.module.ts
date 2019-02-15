@@ -14,6 +14,7 @@ import { AddEventPortletComponent } from './components/add-event-portlet/add-eve
 import { ListEventPortletComponent } from './components/list-event-portlet/list-event-portlet.component';
 import { EventComponent } from './components/event/event.component';
 import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
+import {NotifierModule} from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,19 @@ import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
     BrowserModule,
     FormsModule,
     AngularMultiSelectModule,
+      NotifierModule.withConfig( {
+          position: {
+              horizontal: {
+                  position: 'right',
+                  distance: 12
+              },
+              vertical: {
+                  position: 'top',
+                  distance: 12,
+                  gap: 10
+              }
+          }
+      } ),
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'login', component: LoginComponent },
