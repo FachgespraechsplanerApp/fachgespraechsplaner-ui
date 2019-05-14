@@ -13,8 +13,9 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
 import { AddEventPortletComponent } from './components/add-event-portlet/add-event-portlet.component';
 import { ListEventPortletComponent } from './components/list-event-portlet/list-event-portlet.component';
 import { EventComponent } from './components/event/event.component';
-import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
-import {NotifierModule} from 'angular-notifier';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { NotifierModule } from 'angular-notifier';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {NotifierModule} from 'angular-notifier';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AngularMultiSelectModule,
       NotifierModule.withConfig( {
           position: {
@@ -55,7 +57,9 @@ import {NotifierModule} from 'angular-notifier';
       { path: '**', component: NotFoundComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
