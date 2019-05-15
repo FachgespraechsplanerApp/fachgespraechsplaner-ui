@@ -16,6 +16,7 @@ import { EventComponent } from './components/event/event.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { NotifierModule } from 'angular-notifier';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {AuthGuard} from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -49,11 +50,11 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
           }
       } ),
     RouterModule.forRoot([
-      { path: '', component: LoginComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'admin', component: AdminComponent },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+      { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
       { path: '**', component: NotFoundComponent },
     ])
   ],

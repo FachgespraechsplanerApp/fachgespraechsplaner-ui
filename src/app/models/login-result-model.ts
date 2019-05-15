@@ -1,4 +1,4 @@
 export interface LoginResultModel {
-  token: string;
+  access_token: string;
   error: string;
 }

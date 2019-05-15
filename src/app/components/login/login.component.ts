@@ -31,15 +31,16 @@ export class LoginComponent implements OnInit {
         this.model.password
       ).subscribe(
         r => {
-          if (r.token) {
-            this.user.setToken(r.token);
+          if (r.access_token) {
+            this.user.setToken(r.access_token);
             this.notifier.notify( 'success', 'Login erfolgt.' );
             this.router.navigateByUrl('/dashboard');
           }
         },
         r => {
-          alert(r.error.error);
+          this.notifier.notify( 'error', r.error.message );
           this.notifier.notify( 'error', 'Login fehlgeschlagen.' );
+          console.log(r.error.message);
         }
       );
     }
