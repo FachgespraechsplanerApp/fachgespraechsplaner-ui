@@ -3,7 +3,18 @@
     <img class="navbar-logo" src="{{ institutionLogo }}" alt="">
     <a class="navbar-brand" routerLink="/">{{ title }}</a>
   </div>
-  <div>
+  <div class="display-inline">
+    <div *ngIf="isLogged()" class="dropdown">
+      <a class="dropdown-toggle" role="button" id="dropdownUserLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ username }}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownUserLink">
+        <a class="dropdown-item" routerLink="/settings">Einstellungen</a>
+        <a class="dropdown-item" routerLink="/admin">Administation</a>
+        <span class="dropdown-divider"><hr></span>
+        <a class="dropdown-item" (click)="logOut()" routerLink="/">Abmelden</a>
+      </div>
+    </div>
     <div class="dropleft">
       <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-info-circle"></i>
