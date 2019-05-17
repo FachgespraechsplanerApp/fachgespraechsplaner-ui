@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../../login';
 import {NotifierService} from 'angular-notifier';
+import {AuthService} from '../../services/auth.service';
+import {UserService} from '../../services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,7 @@ export class LoginComponent implements OnInit {
 
     private readonly notifier: NotifierService;
 
-    constructor( notifierService: NotifierService ) {
+    constructor( notifierService: NotifierService, private api: AuthService, private user: UserService, private router: Router ) {
         this.notifier = notifierService;
     }
 
@@ -23,8 +26,22 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-      // TODO: make REST-Call to API Server to Login the user.
-      // TODO: redirect User to /dashboard after successful login.
-        this.notifier.notify( 'success', 'Login erfolgt.' );
+      this.api.login(
+        this.model.email,
+        this.model.password
+      ).subscribe(
+        r => {
+          if (r.access_token) {
+            this.user.setToken(r.access_token);
+            this.notifier.notify( 'success', 'Login erfolgt.' );
+            this.router.navigateByUrl('/dashboard');
+          }
+        },
+        r => {
+          this.notifier.notify( 'error', r.error.message );
+          this.notifier.notify( 'error', 'Login fehlgeschlagen.' );
+          console.log(r.error.message);
+        }
+      );
     }
 }

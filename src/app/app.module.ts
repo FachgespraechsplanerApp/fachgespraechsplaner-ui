@@ -13,8 +13,10 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
 import { AddEventPortletComponent } from './components/add-event-portlet/add-event-portlet.component';
 import { ListEventPortletComponent } from './components/list-event-portlet/list-event-portlet.component';
 import { EventComponent } from './components/event/event.component';
-import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
-import {NotifierModule} from 'angular-notifier';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { NotifierModule } from 'angular-notifier';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {AuthGuard} from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {NotifierModule} from 'angular-notifier';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AngularMultiSelectModule,
       NotifierModule.withConfig( {
           position: {
@@ -47,15 +50,17 @@ import {NotifierModule} from 'angular-notifier';
           }
       } ),
     RouterModule.forRoot([
-      { path: '', component: LoginComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'admin', component: AdminComponent },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+      { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
       { path: '**', component: NotFoundComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
